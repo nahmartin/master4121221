@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://chipsclassiccars.com/wp-content/uploads/2023/09/Chips-Logo-1.png">
+    <title>{{ car.brand }} {{ car.model }}</title>
+    <style>
+
+        *{
+            font-family: "Century Gothic";
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1b1b1b;
+            color: #e0e0e0;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: #2b2b2b;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .car-details {
+            text-align: center;
+        }
+
+        .car-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color: #f0f0f0;
+        }
+
+        .car-price {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .car-year {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .car-image {
+            max-width: 100%;
+            height: auto;
+            margin: 10px auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .car-info {
+            background-color: #2b2b2b;
+            color: #e0e0e0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .car-info textarea {
+            height: 400px;
+            width: 100%;
+            background-color: transparent;
+            color: #e0e0e0;
+            border: none;
+            overflow-y: auto;
+            resize: none;
+            line-height: 1.5;
+        }
+
+        .contact-info {
+            text-align: center;
+            background-color: #2b2b2b;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .additional-photos {
+            margin-top: 20px;
+            background-color: #2b2b2b;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .additional-photos h3 {
+            font-size: 24px;
+            color: #f0f0f0;
+        }
+
+        .additional-photos img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            display: block;
+            border-radius: 10px;
+        }
+
+        .unclickable-textarea {
+    height: 400px;
+    width: 100%;
+    background-color: transparent;
+    color: #e0e0e0;
+    border: none; /* Remove the border */
+    overflow-y: auto;
+    resize: none;
+    line-height: 1.5;
+    pointer-events: none; /* Make the textarea unclickable */
+}
+
+    </style>
+</head>
+<body style="display: flex; align-items: flex-start; justify-content: center; flex-wrap: nowrap">
+   <div class="container">
+    <div class="car-details">
+        <h1 class="car-title">{{ car.brand }} {{ car.model }}</h1>
+        <p class="car-price">Price: ${{ car.price }}</p>
+        <p class="car-year">Year: {{ car.year }}</p>
+        <img src="{{ car.main_photo.url }}" class="car-image" alt="Car Image">
+    </div>
+    <div class="car-info">
+        <textarea readonly style="height: 700px; border: none" class="unclickable-textarea">{{ car.short_info }}</textarea>
+    </div>
+       <hr style="background-color: black">
+       <h3>Contact Us</h3>
+        <p>
+            If you have any questions about this classic car or would like to inquire about purchasing it, feel free to contact us. We're here to help!
+        </p>
+        <p>Phone number: +1 (316) 512-1989</p>
+        <p>Address: 741 W Washington AveChandler, IN 47610</p>
+        <p>E-mail: sales@chipsclassicscars.com</p>
+</div>
+
+
+    <div class="container additional-photos">
+        <h3>Additional Photos</h3>
+        <div class="row">
+            {% for car_photo in car.carphoto_set.all %}
+                <div class="col-md-4">
+                    <img src="{{ car_photo.photo.url }}" alt="Additional Car Photo">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
