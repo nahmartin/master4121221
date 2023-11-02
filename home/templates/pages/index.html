@@ -500,7 +500,7 @@
           <div class="col-md-4 col-sm-6 car-container" data-brand="{{ car.brand }}" data-year="{{ car.year }}" data-price="{{ car.price }}" data-type="{{ car.type }}">
             <div class="car-card">
               <a href="{% url 'car_details' car.id %}" style="text-decoration: none" class="carr">
-                <div class="car-image">
+                <div class="car-image" style="height: 198px">
                   <img src="{{ car.main_photo.url }}" alt="{{ car.brand }} {{ car.model }}">
                 </div>
                 <div class="car-details">
